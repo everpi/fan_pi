@@ -46,7 +46,9 @@ y
 
 int little_atoi(char *par){
 	
-	return ( (par[0] - 48)*10 + (par[1] - 48) );
+	if(par[1]){	
+		return ( (par[0] - 48)*10 + (par[1] - 48) );
+	}else   return (par[0] - 48);
 }
 
 int get_soc_temp_sysfs();
@@ -96,10 +98,9 @@ int main(int argc, char *argv[]){
 		
 		if(temp >= TEMP_MIN){
 		
-			pwm = PWM_MIN+(((temp+1)-TEMP_MIN)*celsius_step);
+			pwm = PWM_MIN+(((temp)-TEMP_MIN)*celsius_step);
 			
 			if(pwm > 1024) pwm = 1024;	
-			//else if(pwm < PWM_MIN) pwm = PWM_MIN;			
 
 		}else pwm = 0;
                 
