@@ -56,7 +56,6 @@ int get_soc_temp_sysfs();
 int main(int argc, char *argv[]){
 	
 	int temp = 0;
-	int temp_p = 0;
 	int pwm = PWM_MIN;	
 	int celsius_step = 0;
 	int TEMP_MIN = 0;
@@ -105,10 +104,9 @@ int main(int argc, char *argv[]){
 
 		}else pwm = 0;
                 
-		if(temp != temp_p) pwmWrite(1,pwm);
+		pwmWrite(1,pwm);
 			
-		temp_p = temp;		
-
+		
                 if(argc < 4){
                         printf("Temp: %dC\nPwm: %d\n\n",temp,pwm);
                 }
