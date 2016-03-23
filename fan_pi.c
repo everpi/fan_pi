@@ -84,7 +84,8 @@ int main(int argc, char *argv[]){
 	
   	wiringPiSetup();
   	pinMode(1,PWM_OUTPUT);	
-	
+	pwmSetClock(16);	
+
 	setuid(65534);
 	setgid(65534);
 	
